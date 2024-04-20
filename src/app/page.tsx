@@ -1,4 +1,5 @@
 import SimpleMap from "@/components/Map";
+import { TableRow } from "@/components/TableRow";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
@@ -10,73 +11,89 @@ export default function Home() {
     ssr: false
   })
 
-  const data =     [{
-    "uuid":"abc",
-    "title":"incident 1",
-    "num_articles": 5,
-    "date": "2024-01-01",
-    "num_missing": 3,
-    "num_death": 2,
-    "region": "North America",
-    "number_dead": 2,
-    "number_missing" : 5,
-    "number_survivors": 1,
-    "country_of_origin": "Mexico",
-    "region_of_origin": "Central America",
-    "cause_of_death": "Drowning",
-    "country_of_incident": "USA",
-    "location_of_incident": "USA",
-    "longitude": 31.650259,
-    "latitude": -110.366453,
-    "verified": "True"
-}, 
-{
-    "uuid":"def",
-    "title":"incident 2",
-    "num_articles": 5,
-    "date": "2024-01-01",
-    "num_missing": 3,
-    "num_death": 2,
-    "region": "North America",
-    "number_dead": 2,
-    "number_missing" : 5,
-    "number_survivors": 1,
-    "country_of_origin": "Mexico",
-    "region_of_origin": "Central America",
-    "cause_of_death": "Drowning",
-    "country_of_incident": "USA",
-    "location_of_incident": "USA",
-    "longitude": 31.650259,
-    "latitude": -110.366453,
-    "verified": "True"}
-  
-  
-]
+  const data =
+    [
+      {
+        "incident_id": 1,
+        "verified": true,
+        "date": "2021-05-06",
+        "number_dead": 20,
+        "number_missing": 10,
+        "number_survivors": 30,
+        "country_of_origin": "Libya",
+        "region_of_origin": "North Africa",
+        "cause_of_death": "Drowning",
+        "region_of_incident": "Mediterranean",
+        "country_of_incident": "Italy",
+        "location_of_incident": "Mediterranean Sea",
+        "latitude": 41.9028,
+        "longitude": 12.4964,
+
+        'title': 'Migrant boat capsizes in Mediterranean Sea',
+        'summary': 'A boat carrying migrants capsized in the Mediterranean Sea. 20 people died and 10 are missing. 30 people survived.'
+      },
+      {
+        "incident_id": 2,
+        "verified": false,
+        "date": "2021-05-06",
+        "number_dead": 20,
+        "number_missing": 10,
+        "number_survivors": 30,
+        "country_of_origin": "Libya",
+        "region_of_origin": "North Africa",
+        "cause_of_death": "Drowning",
+        "region_of_incident": "Mediterranean",
+        "country_of_incident": "Italy",
+        "location_of_incident": "Mediterranean Sea",
+        "latitude": 41.9028,
+        "longitude": 12.4964,
+        'title': 'Migrant boat capsizes in Mediterranean Sea',
+        'summary': 'A boat carrying migrants capsized in the Mediterranean Sea. 20 people died and 10 are missing. 30 people survived'
+      },
+      {
+        "incident_id": 3,
+        "verified": true,
+        "date": "2021-05-06",
+        "number_dead": 20,
+        "number_missing": 10,
+        "number_survivors": 30,
+        "country_of_origin": "Libya",
+        "region_of_origin": "North Africa",
+        "cause_of_death": "Drowning",
+        "region_of_incident": "Mediterranean",
+        "country_of_incident": "Spain",
+        "location_of_incident": "Mediterranean Sea",
+        "latitude": 41.9028,
+        "longitude": 12.4964,
+        'title': 'Migrant boat capsizes in Mediterranean Sea',
+        'summary': 'A boat carrying migrants capsized in the Mediterranean Sea. 20 people died and 10 are missing. 30 people survived.'
+      }
+    ]
 
   return (
     <>
-    <h1 className="text-2xl">Incidents</h1>
-
-    {data.map((incident) => (
-      <Link href={`incident/${incident.uuid}`} key={incident.uuid} >
-        <div className="flex justify-between rounded-xl hover:bg-gray-200 p-5">
-          <div className="">
-              <h2>{incident.title}</h2>
-              <p>Date {incident.date}</p>
-              <p>Number of articles {incident.num_articles}</p>
-              <p>Number missing {incident.num_missing}</p>
-              <p>Number death {incident.num_death}</p>
-          </div>
-          <div>
-            MAP
-          </div>
-        </div>
-  </Link>
-  
-    ))}
-
-
-      
+      <h1 className="text-2xl mb-5">Incidents</h1>
+      <table className="min-w-full divide-y divide-gray-200">
+        <thead className="bg-gray-50">
+          <tr>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Region of Origin</th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country of Origin</th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location of Incident</th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country of Incident</th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Number Dead</th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Number Missing</th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Number Survivors</th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Verified</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-gray-200">
+          {data.map((incident, index) => (
+            <TableRow key={incident.incident_id} incident={incident} index={index} />
+          ))}
+        </tbody>
+      </table>
     </>
   );
 }
