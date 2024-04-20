@@ -1,7 +1,7 @@
 import { FactsTable } from '@/components/FactsTable'
 import InfoTag from '@/components/InfoTag'
 import Relevant from '@/components/Relevant'
-import ToggleRelevant from '@/components/TogleRelevant'
+import ToggleRelevant from '@/components/Relevant'
 import { table } from 'console'
 import React from 'react'
 
