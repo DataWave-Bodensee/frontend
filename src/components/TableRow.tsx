@@ -11,16 +11,20 @@ export const TableRow = ({ incident, index }: { incident: any, index: number }) 
 
   }
 
+  const limit = (text:string, length:number) => {
+    return text.length>length?text.slice(0,length)+"...":text
+  }
+
   return (
 
 
     <tr onClick={goTo} className={`${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-gray-200 cursor-pointer`}>
-      <td className="px-6 py-4 whitespace-nowrap">{incident.title.length>40?incident.title.slice(0,40)+"...":incident.title}</td>
+      <td className="px-6 py-4 whitespace-nowrap">{limit(incident.title, 40)}</td>
       <td className="px-6 py-4 whitespace-nowrap">{incident.date}</td>
-      <td className="px-6 py-4 whitespace-nowrap">{incident.region_of_origin}</td>
-      <td className="px-6 py-4 whitespace-nowrap">{incident.country_of_origin}</td>
-      <td className="px-6 py-4 whitespace-nowrap">{incident.location_of_incident}</td>
-      <td className="px-6 py-4 whitespace-nowrap">{incident.country_of_incident}</td>
+      <td className="px-6 py-4 whitespace-nowrap">{limit(incident.region_of_origin,20)}</td>
+      <td className="px-6 py-4 whitespace-nowrap">{limit(incident.country_of_origin,20)}</td>
+      <td className="px-6 py-4 whitespace-nowrap">{limit(incident.location_of_incident, 20)}</td>
+      <td className="px-6 py-4 whitespace-nowrap">{limit(incident.country_of_incident, 20)}</td>
       <td className="px-6 py-4 whitespace-nowrap">{incident.number_dead}</td>
       <td className="px-6 py-4 whitespace-nowrap">{incident.number_missing}</td>
       <td className="px-6 py-4 whitespace-nowrap">{incident.number_survivors}</td>
