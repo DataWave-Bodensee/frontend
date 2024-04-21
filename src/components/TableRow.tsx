@@ -1,5 +1,4 @@
 'use client'
-import Link from 'next/link'
 import React from 'react'
 import { useRouter } from 'next/navigation'
 import Verified from './Verified'
@@ -16,7 +15,7 @@ export const TableRow = ({ incident, index }: { incident: any, index: number }) 
 
 
     <tr onClick={goTo} className={`${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-gray-200 cursor-pointer`}>
-      <td className="px-6 py-4 whitespace-nowrap">{incident.title}</td>
+      <td className="px-6 py-4 whitespace-nowrap">{incident.title.length>40?incident.title.slice(0,40)+"...":incident.title}</td>
       <td className="px-6 py-4 whitespace-nowrap">{incident.date}</td>
       <td className="px-6 py-4 whitespace-nowrap">{incident.region_of_origin}</td>
       <td className="px-6 py-4 whitespace-nowrap">{incident.country_of_origin}</td>
