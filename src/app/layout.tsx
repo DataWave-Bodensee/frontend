@@ -18,15 +18,15 @@ export default function RootLayout({
     <html lang="en" className="text-zinc-600">
       <body className="">
         <div className="bg-red-800 text-gray-100 p-10">
-        <h1 className="text-5xl">Missing Migrants <span className="text-xl">AI Crawler</span></h1>
-        <Navbar />
+          <h1 className="text-5xl">Missing Migrants <span className="text-xl">AI Crawler</span></h1>
+          <Navbar />
         </div>
         <main className="p-10">
 
-        {children}
+          {children}
         </main>
-        <Footer/>
-        </body>
+        <Footer />
+      </body>
     </html>
   );
 }
