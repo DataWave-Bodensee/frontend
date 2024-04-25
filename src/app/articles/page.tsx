@@ -2,11 +2,18 @@ import Relevant from '@/components/Relevant'
 import Link from 'next/link'
 import React from 'react'
 
+
+/**
+ * Articles overview page
+ * 
+ */
+
 const page = async () => {
 
-  const res = await fetch('https://api-missing-migrants.azurewebsites.net/articles', {cache: "no-store"}) 
-  const data:[any] = (await res.json()).articles
-  
+  const res = await fetch('https://api-missing-migrants.azurewebsites.net/articles', { cache: "no-store" })
+  const res_json = await res.json()
+  const data: [Article] = res_json.articles
+
   return (
     <>
       <h1 className='text-2xl mb-5'>Articles</h1>

@@ -1,7 +1,15 @@
 "use client"
 
-const Verified = ({ id, verified }: { id?: number, verified: boolean }) => {
+/**
+ * Component to mark an article as verified or not verified
+ * Further work: Add interaction to change the value
+ * 
+ * @param id the id of the article
+ * @param verified if the article is verified
+ * 
+*/
 
+const Verified = ({ id, verified }: { id?: number, verified: boolean }) => {
 
     const toggle = async () => { }
     const readonly = id === undefined

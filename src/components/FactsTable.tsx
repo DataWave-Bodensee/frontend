@@ -1,7 +1,13 @@
 import React from 'react'
 import InfoTag from './InfoTag'
 
-export const FactsTable = ({ data }: { data: any }) => {
+/**
+ * Table to display the attributes of interest
+ * @param data data to be displayed
+ * 
+ */
+
+export const FactsTable = ({ data }: { data:any }) => {
   return (
     <>
 

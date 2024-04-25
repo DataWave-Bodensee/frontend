@@ -1,10 +1,16 @@
 import { TableRow } from "@/components/TableRow";
+import RootLayout from "./layout";
 
+/**
+ * Landing page to display the incidents
+ * 
+ */
 
 export default async function Home() {
 
   const res = await fetch('https://api-missing-migrants.azurewebsites.net/incidents', {cache: "no-store"})
-  const data = (await res.json()).incidents
+  const res_json = await res.json()
+  const incidents:[Incident] = res_json.incidents
 
   return (
     <>
@@ -25,7 +31,7 @@ export default async function Home() {
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200">
-          {data.map((incident, index) => (
+          {incidents.map((incident, index) => (
             <TableRow key={incident.incident_id} incident={incident} index={index} />
           ))}
         </tbody>

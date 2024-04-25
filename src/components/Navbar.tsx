@@ -1,8 +1,12 @@
 import Link from 'next/link'
 import React from 'react'
 
-export const Navbar = () => {
+/**
+ * Simple navbar component to navigate between incidents and articles
+ * 
+ */
 
+export const Navbar = () => {
 
     const links = [
         {href: '/', text: 'incidents'},

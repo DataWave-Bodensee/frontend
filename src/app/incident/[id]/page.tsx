@@ -3,22 +3,28 @@ import Verified from '@/components/Verified'
 import Link from 'next/link'
 import React from 'react'
 
-const incident = async ({ params }: { params: { uuid: string } }) => {
+/**
+ * Detail page for an incident
+ * @param id of the incident
+ * 
+ */
 
-  const res = await fetch(`https://api-missing-migrants.azurewebsites.net/incidents/${params.uuid}`, {cache: "no-store"})
-  const json_data = await res.json()
-  const data = json_data.incident[0]
-  const articles: [any] = json_data.articles
+const Incident = async ({ params }: { params: {id:number } }) => {
+
+  const res = await fetch(`https://api-missing-migrants.azurewebsites.net/incidents/${params.id}`, {cache: "no-store"})
+  const res_json = await res.json()
+  const incident:Incident= res_json.incident[0]
+  const articles: [Article] = res_json.articles
 
 
   return (
     <>
       <h1 className='text-2xl mb-5'>
-        Incident - {data.title}
-        <Verified verified={data.verified} id={data.incident_id} />
+        Incident - {incident.title}
+        <Verified verified={incident.verified} id={incident.incident_id} />
       </h1>
 
-      <p>Date {data.date}</p>
+      <p>Date {incident.date}</p>
 
       <h2 className='mt-10 text-xl mb-2'>Sources</h2>
       
@@ -28,9 +34,9 @@ const incident = async ({ params }: { params: { uuid: string } }) => {
           </Link>))}
       
 
-      <FactsTable data={data} />
+      <FactsTable data={incident} />
     </>
   )
 }
 
-export default incident
+export default Incident

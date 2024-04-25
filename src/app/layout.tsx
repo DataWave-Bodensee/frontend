@@ -9,6 +9,12 @@ export const metadata: Metadata = {
   description: "Data4Good 2024 - DataWave Bodensee",
 };
 
+/**
+ * Wrapper layout for all pages
+ * @param children children to be rendered
+ * 
+ */
+
 export default function RootLayout({
   children,
 }: Readonly<{
